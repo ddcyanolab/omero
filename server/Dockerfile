@@ -7,9 +7,12 @@ RUN cd /opt/omero/server/ && \
 USER root
 
 # OMERO.py plugins
+RUN wget https://raw.githubusercontent.com/ome/omero-figure/master/omero_figure/scripts/omero/figure_scripts/Figure_To_Pdf.py -O /opt/omero/server/OMERO.server/lib/scripts/omero/figure_scripts/Figure_To_Pdf.py
 RUN /opt/omero/server/venv3/bin/python -m pip install \
     omero-cli-render \
-    omero-metadata
+    omero-metadata   \
+    reportlab        \
+    markdown
 
 USER omero-server
 
